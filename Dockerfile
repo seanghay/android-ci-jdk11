@@ -1,4 +1,7 @@
+# Reference: https://dev.to/lavolpe/gitlab-ci-for-android-2021-update-2hhl
+
 FROM openjdk:11-jdk
+
 
 ENV ANDROID_COMPILE_SDK=30
 ENV ANDROID_BUILD_TOOLS=30.0.3
