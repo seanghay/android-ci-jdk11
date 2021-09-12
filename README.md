@@ -18,10 +18,10 @@ docker pull ghcr.io/seanghay/android-ci-jdk11:latest
 image: ghcr.io/seanghay/android-ci-jdk11:latest
 
 before_script:
-    - chmod +x ./gradlew
-    
+  - chmod +x ./gradlew
+
 stages:
-    - build
+  - build
 
 cache:
   paths:
@@ -29,12 +29,12 @@ cache:
     - .gradle/caches
 
 assembleDebug:
-    stage: build
-    script:
-        - ./gradlew assembleDebug
-        - cp app/build/outputs/apk/debug/app-debug.apk app-debug.apk
-    artifacts:
-        paths:
-            - app-debug.apk
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+    - cp app/build/outputs/apk/debug/app-debug.apk app-debug.apk
+  artifacts:
+    paths:
+      - app-debug.apk
            
 ```
