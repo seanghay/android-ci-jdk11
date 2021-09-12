@@ -28,16 +28,16 @@ RUN unzip -d android-sdk-linux/cmdline-tools android-sdk.zip
 RUN mv android-sdk-linux/cmdline-tools/cmdline-tools android-sdk-linux/cmdline-tools/tools
 
 # Use `ANDROID_SDK_ROOT` instead of `ANDROID_HOME`. `ANDROID_HOME` is deprecated
-ENV ANDROID_SDK_ROOT=$PWD/android-sdk-linux
+ENV ANDROID_SDK_ROOT=/root/android-sdk-linux
 
 RUN echo y | android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
 RUN echo y | android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "platform-tools" >/dev/null
 RUN echo y | android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
 
-ENV PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
+ENV PATH=$PATH:/root/android-sdk-linux/platform-tools/
 
 # Accept all licenses
 RUN yes | android-sdk-linux/cmdline-tools/tools/bin/sdkmanager --licenses
 
 # gradle cache directory
-ENV GRADLE_USER_HOME=$PWD/.gradle
+ENV GRADLE_USER_HOME=/root/.gradle
