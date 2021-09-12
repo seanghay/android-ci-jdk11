@@ -11,7 +11,7 @@ ENV ANDROID_SDK_TOOLS=6858069_latest
 # Install packages
 RUN apt-get --quiet update --yes
 RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6
-RUN apt-get -qq install curl
+RUN apt-get -qq install curl jq
 
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
