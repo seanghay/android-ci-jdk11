@@ -13,6 +13,11 @@ RUN apt-get --quiet update --yes
 RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6
 RUN apt-get -qq install curl
 
+# Node.js
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get --quiet install nodejs --yes
+RUN apt-get --quiet install gcc g++ make --yes
+
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}.zip
 
 RUN mkdir -p android-sdk-linux/cmdline-tools
