@@ -15,15 +15,15 @@ RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android
 
 RUN unzip -d android-sdk-linux android-sdk.zip
 
-RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
-RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager "platform-tools" >/dev/null
-RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
+RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=$PWD "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
+RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=$PWD "platform-tools" >/dev/null
+RUN echo y | android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=$PWD "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
 
 ENV ANDROID_HOME=$PWD/android-sdk-linux
 
 ENV PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
 
 # accept the SDK licenses
-RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
+RUN yes | android-sdk-linux/tools/bin/sdkmanager --sdk_root=$PWD --licenses
 
 ENV GRADLE_USER_HOME=$PWD/.gradle
