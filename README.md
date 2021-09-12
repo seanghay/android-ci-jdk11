@@ -7,6 +7,12 @@
 - Node.js 14 preinstalled
 
 
+## Docker
+
+```bash
+docker pull ghcr.io/seanghay/android-ci-jdk11:latest
+```
+
 ## GitLab CI/CD
 ```yml
 image: ghcr.io/seanghay/android-ci-jdk11:latest
